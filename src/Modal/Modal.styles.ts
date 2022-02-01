@@ -10,7 +10,10 @@ export const Overlay = styled.div<{ isOpen: boolean }>`
     bottom: 0;
     right: 0;
     border-radius: 50px;
-    background: linear-gradient(rgb(185 156 193 / 72%) 0%, rgb(214 182 182 / 60%) 100%);
+    background: linear-gradient(
+        rgb(185 156 193 / 36%) 0%,
+        rgb(214 182 182 / 30%) 100%
+    );
 `
 
 export const Block = styled.div`

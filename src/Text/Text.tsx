@@ -1,18 +1,13 @@
 import React from 'react'
+import { observer } from 'mobx-react-lite'
 import { TextContainer } from './Text.styles'
 
 type TextProps = {
-    r: string
-    g: string
-    b: string
+    text: string
 }
 
-const Text: React.FC<TextProps> = ({ r, g, b }) => {
-    return (
-        <TextContainer>
-            R: {r} G: {g} B: {b}
-        </TextContainer>
-    )
-}
+const Text: React.FC<TextProps> = observer(({ text }) => {
+    return <TextContainer>{text}</TextContainer>
+})
 
 export default Text

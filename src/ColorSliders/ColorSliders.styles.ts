@@ -10,49 +10,83 @@ export const SliderContainer = styled.div`
     justify-content: space-between;
 `
 
-export const Line = styled.input<{ lineColor: string }>`
-    -webkit-appearance: none;
-    margin: 0.75rem 0.5rem;
-    width: 280px;
-    height: 3px;
-    background: rgb(205 201 201 / 48%);
-    border-radius: 5px;
+export const Line = styled.input<{ lineColor: string; widthOfOffset: number }>`
+    margin: 0.85rem 0.5rem;
+    position: relative;
 
-    &::-webkit-slider-runnable-track {
+    /*********** Baseline, reset styles ***********/
+    -webkit-appearance: none;
+    appearance: none;
+    background: transparent;
+    cursor: pointer;
+    width: 100%;
+
+    /* Removes default focus */
+    &:focus {
+        outline: none;
     }
 
+    /******** Chrome, Safari, Opera and Edge Chromium styles ********/
+    /* slider track */
+    &::-webkit-slider-runnable-track {
+        background-color: rgb(205 201 201 / 48%);
+        border-radius: 1px;
+        height: 3px;
+        z-index: 1;
+    }
+
+    /* slider thumb */
     &::-webkit-slider-thumb {
-        -webkit-appearance: none;
+        -webkit-appearance: none; /* Override default look */
+        appearance: none;
+        margin-top: -9.85px; /* Centers thumb on the track */
+        background-color: #fefffe;
+        border-radius: 50%;
         height: 20px;
         width: 20px;
-        border-radius: 50%;
-        background: var(--primary-color);
-        cursor: pointer;
         box-shadow: var(--shadow);
-        transition: background 0.3s ease-in-out;
+        z-index: 1000;
     }
 
-    /* &::before {
-        content: '';
+    &:focus::-webkit-slider-thumb {
+        outline: 3px solid #fefffe;
+        outline-offset: 0.125rem;
+    }
+
+    /*********** Firefox styles ***********/
+    /* slider track */
+    &::-moz-range-track {
+        background-color: rgb(205 201 201 / 48%);
+        border-radius: 1px;
         height: 3px;
-        width: 100px;
-        background-color: ${(props) => props.lineColor};
+    }
+
+    /* slider thumb */
+    &::-moz-range-thumb {
+        background-color: #fefffe;
+        border: none; /*Removes extra border that FF applies*/
+        border-radius: 50%;
+        height: 20px;
+        width: 20px;
+        box-shadow: var(--shadow);
+    }
+
+    &:focus::-moz-range-thumb {
+        outline: 3px solid #fefffe;
+        outline-offset: 0.125rem;
+    }
+
+    &::before {
+        content: '';
         position: absolute;
-        top: 0;
-    } */
+        display: block;
+        background-color: ${({ lineColor }) => lineColor};
+        height: 3px;
+        ${({ widthOfOffset }) => `width: calc(${widthOfOffset}px - 1px)`};
+    }
 `
 
-// export const Nob = styled.span`
-//     width: 1.25rem;
-//     height: 1.25rem;
-//     border-radius: 50%;
-//     background-color: var(--primary-color);
-//     position: absolute;
-//     top: -8px;
-//     box-shadow: var(--shadow);
-//     transform: translateX(100px);
-// `
-
-export const Number = styled.span`
+export const RangeNumber = styled.span`
     font-size: 0.75rem;
+    font-weight: bold;
 `

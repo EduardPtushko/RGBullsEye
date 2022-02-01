@@ -22,6 +22,7 @@ body {
     --primary-color: #fefffe;
     --secondary-color: #010101;
     --bg-color: #f2f3f7;
-    --shadowm: 5px 15px 49px 0px rgba(49, 125, 184, 0.2);
+    --northWestShadow: -6px -6px 16px rgba(250, 250, 250, 0.2),
+        -6px -6px 16px #bdcde1;
     --shadow: -6px -6px 16px rgba(250, 250, 250, 0.2), 6px 6px 16px #bdcde1;
 }
